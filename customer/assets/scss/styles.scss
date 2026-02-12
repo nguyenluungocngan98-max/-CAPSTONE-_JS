@@ -1,0 +1,40 @@
+
+$primary-color: #111;
+$accent-color: #facc15;
+$dark-color: #000;
+$light-bg: #f9fafb;
+$radius: 12px;
+
+$font-main: 'Poppins', sans-serif;
+
+
+body {
+  font-family: $font-main;
+  background-color: $light-bg;
+}
+
+header {
+  transition: all 0.3s ease;
+
+  a {
+    transition: color 0.3s ease;
+  }
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.product-card {
+  transition: all 0.3s ease;
+  border-radius: $radius;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
+}
+
+footer {
+  font-size: 14px;
+}

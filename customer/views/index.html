@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobileX</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+    <!-- Flowbite -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+
+    <!-- Tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- HEADER -->
+    <header class="bg-black text-white">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h2 class="text-2xl font-bold">MobileX</h2>
+
+            <nav class="space-x-6 hidden md:block">
+                <a href="#" class="hover:text-yellow-400">Home</a>
+                <a href="#" class="hover:text-yellow-400">Phones</a>
+                <a href="#" class="hover:text-yellow-400">Deals</a>
+                <a href="#" class="hover:text-yellow-400">Support</a>
+            </nav>
+
+            <!-- Cart number -->
+            <button data-modal-target="cart-modal" data-modal-toggle="cart-modal" class="relative">
+                <i class="fa-solid fa-cart-shopping text-xl"></i>
+                <span id="items_number"
+                    class="absolute -top-2 -right-3 bg-red-500 text-xs text-white px-2 py-0.5 rounded-full">
+                    0
+                </span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero-gradient bg-white py-16">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center">
+
+            <div class="md:w-1/2">
+                <span class="bg-yellow-400 text-black px-3 py-1 rounded text-sm">
+                    New Release
+                </span>
+
+                <h1 class="text-4xl font-bold mt-4">
+                    Smartphone for Your Lifestyle
+                </h1>
+
+                <p class="mt-4 text-gray-600">
+                    Thiết kế tinh tế – Hiệu năng vượt trội – Giá hợp lý cho sinh viên.
+                </p>
+
+                <div class="mt-6 space-x-3">
+                    <button class="bg-black text-white px-5 py-2 rounded hover:bg-gray-800">
+                        Buy Now
+                    </button>
+                    <button class="border border-black px-5 py-2 rounded hover:bg-black hover:text-white">
+                        View Specs
+                    </button>
+                </div>
+            </div>
+
+            <div class="md:w-1/2 mt-10 md:mt-0 text-center">
+                <img src="./../assets/img/ip14.png" class="mx-auto w-80">
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTER -->
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <label class="mr-3 font-medium">Choose phone type:</label>
+        <select id="phoneType"
+            class="border border-gray-300 px-4 py-2 rounded focus:ring-2 focus:ring-black focus:outline-none">
+            <option value="">All Phones</option>
+            <option value="Samsung">Samsung</option>
+            <option value="iphone">iPhone</option>
+        </select>
+    </div>
+
+    <!--  PRODUCT LIST  -->
+    <section class="max-w-6xl mx-auto px-4 pb-16">
+        <h2 class="text-2xl font-bold mb-8">Popular Phones</h2>
+
+        <div id="productList" class=" product-card grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- renderUI -->
+        </div>
+    </section>
+
+    <!--  FLOWBITE MODAL  -->
+    <div id="cart-modal" tabindex="-1"
+        class="hidden overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-black bg-opacity-50">
+
+        <div class="relative p-4 w-full max-w-3xl">
+
+            <div class="relative bg-white rounded-lg shadow">
+
+                <!-- Header -->
+                <div class="flex items-center justify-between p-4 border-b">
+                    <h3 class="text-xl font-semibold">
+                        Your Cart
+                    </h3>
+                    <button type="button" class="text-gray-400 hover:text-gray-900" data-modal-hide="cart-modal">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Body -->
+                <div class="p-6">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b">
+                                <th class="py-2">Name</th>
+                                <th>Price</th>
+                                <th>Quatity</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartBody"></tbody>
+                    </table>
+
+                    <div class="text-right mt-6">
+                        <span class="text-lg font-semibold">
+                            Total: <span id="totalAmount">0</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="flex justify-end p-4 border-t">
+                    <button onclick="checkOut()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                        Checkout
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="bg-black text-gray-400 text-center py-6 mt-16">
+    <p class="text-sm md:text-base">
+        © 2026 MobileX Store. All rights reserved.
+    </p>
+</footer>
+
+
+    <!-- SCRIP Flowbite -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+
+    <!-- AXIOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.11.0/axios.min.js"
+        integrity="sha512-h9644v03pHqrIHThkvXhB2PJ8zf5E9IyVnrSfZg8Yj8k4RsO4zldcQc4Bi9iVLUCCsqNY0b4WXVV4UB+wbWENA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script type="module" src="./../controller/main.js"></script>
+</body>
+
+</html>
